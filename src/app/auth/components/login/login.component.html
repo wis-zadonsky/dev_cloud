@@ -1,0 +1,26 @@
+<section class="container">
+  <h1 class="large text-primary">Sign In</h1>
+  <p class="lead">👨‍💻 Sign into Your Account</p>
+  <form class="form" [formGroup]="authForm" (ngSubmit)="authForm.valid && submit()">
+    <div class="form-group">
+      <input
+        type="email"
+        placeholder="Email Address"
+        formControlName="email"
+        required
+      />
+    </div>
+    <div class="form-group">
+      <input
+        type="password"
+        placeholder="Password"
+        formControlName="password"
+        required
+      />
+    </div>
+    <button type="submit" class="btn btn-primary">Login</button>
+  </form>
+  <p class="my-1">
+    Don't have an account? <a routerLink="../users">Sign Up</a>
+  </p>
+</section>

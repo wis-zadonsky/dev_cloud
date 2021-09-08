@@ -11,15 +11,22 @@
   "private": true,
   "dependencies": {
     "@angular/animations": "~12.2.0",
+    "@angular/cdk": "^12.2.4",
     "@angular/common": "~12.2.0",
     "@angular/compiler": "~12.2.0",
     "@angular/core": "~12.2.0",
     "@angular/forms": "~12.2.0",
+    "@angular/material": "^12.2.4",
     "@angular/platform-browser": "~12.2.0",
     "@angular/platform-browser-dynamic": "~12.2.0",
     "@angular/router": "~12.2.0",
+    "codelyzer": "^6.0.2",
+    "prettier": "^2.3.2",
     "rxjs": "~6.6.0",
+    "rxjs-tslint-rules": "^4.34.8",
     "tslib": "^2.3.0",
+    "tslint-eslint-rules": "^5.4.0",
+    "tslint-microsoft-contrib": "^6.2.0",
     "zone.js": "~0.11.4"
   },
   "devDependencies": {
