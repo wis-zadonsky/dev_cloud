@@ -5,31 +5,33 @@ import { takeUntil, tap } from 'rxjs/operators';
 import { Subject } from 'rxjs';
 
 import { IAuthToken } from '@app/core';
+import { AuthService } from '@app/auth';
 
-import { IAuth } from '../../interfaces/auth.interface';
-import { AuthService } from '../../services/auth.service';
+import { ISignUp } from '../../interfaces/sign-up.interface';
 import { IError } from '../../../core/interfaces/error.interface';
 
 @Component({
-  selector: 'app-login-container',
-  templateUrl: './login.container.html',
+  selector: 'app-registration-container',
+  templateUrl: './registration.component.html',
 })
-export class LoginContainer implements OnDestroy {
+export class RegistrationContainer implements OnDestroy {
 
   public errors!: IError[];
 
   private readonly _destroy$ = new Subject<void>();
 
-  constructor(private readonly _authService: AuthService) {}
+  constructor(
+    private readonly _authService: AuthService,
+  ) {}
 
   public ngOnDestroy(): void {
     this._destroy$.next();
     this._destroy$.complete();
   }
 
-  public submit(formData: IAuth): void {
+  public submit(formData: ISignUp): void {
     this._authService
-      .auth(formData)
+      .signUp(formData)
       .pipe(
         takeUntil(this._destroy$),
       )

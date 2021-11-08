@@ -1,13 +1,17 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 import { IAuth } from '../../interfaces/auth.interface';
+import { IError } from '../../../core/interfaces/error.interface';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
 })
 export class LoginComponent {
+
+  @Input()
+  public errors!: IError[];
 
   @Output()
   public formSubmit = new EventEmitter<IAuth>();

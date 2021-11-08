@@ -1,4 +1,5 @@
 <section class="container">
+  <app-alert *ngIf="errors" [errors]="errors"></app-alert>
   <h1 class="large text-primary">Sign In</h1>
   <p class="lead">👨‍💻 Sign into Your Account</p>
   <form class="form" [formGroup]="authForm" (ngSubmit)="authForm.valid && submit()">
@@ -21,6 +22,6 @@
     <button type="submit" class="btn btn-primary">Login</button>
   </form>
   <p class="my-1">
-    Don't have an account? <a routerLink="../users">Sign Up</a>
+    Don't have an account? <a routerLink="registration">Sign Up</a>
   </p>
 </section>

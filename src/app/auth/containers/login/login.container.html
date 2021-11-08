@@ -1,1 +1,4 @@
-<app-login (formSubmit)="submit($event)"></app-login>
+<app-login
+  [errors]="errors"
+  (formSubmit)="submit($event)">
+</app-login>
