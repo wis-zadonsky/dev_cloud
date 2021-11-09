@@ -1,0 +1,65 @@
+<section class="container">
+  <app-alert *ngIf="errors" [errors]="errors"></app-alert>
+  <h1 class="large text-primary">Sign Up</h1>
+  <p class="lead">💻 Create Your Account</p>
+  <form class="form" [formGroup]="createUserForm" (ngSubmit)="submit()">
+    <div class="form-group">
+      <input type="text" placeholder="Name" formControlName="name" required />
+      <mat-error *ngIf="createUserForm.get('name')?.touched &&
+       createUserForm.get('name')?.errors?.required">
+        Please enter your name to sign up
+      </mat-error>
+    </div>
+    <div class="form-group">
+      <input type="email" placeholder="Email Address" formControlName="email" required />
+      <mat-error *ngIf="createUserForm.get('email')?.touched &&
+       createUserForm.get('email')?.errors?.required">
+        Please enter e-mail to sign up
+      </mat-error>
+      <mat-error *ngIf="createUserForm.get('email')?.touched &&
+       createUserForm.get('email')?.errors?.email">
+        The entered email is invalid. Please check entered email for proper spelling
+      </mat-error>
+      <small class="form-text"
+        >This site uses Gravatar so if you want a profile image, use a Gravatar
+        email</small
+      >
+    </div>
+    <div class="form-group">
+      <input
+        type="password"
+        placeholder="Password"
+        formControlName="password"
+        required
+      />
+      <mat-error *ngIf="createUserForm.get('password')?.touched &&
+       createUserForm.get('password')?.errors?.required">
+        Please enter password to sign up
+      </mat-error>
+      <mat-error *ngIf="createUserForm.get('password')?.touched &&
+       createUserForm.get('password')?.errors?.passwordPatternError">
+        Password must consist of upper and lower case characters, digits, and contain at least 8 characters.
+      </mat-error>
+    </div>
+    <div class="form-group">
+      <input
+        type="password"
+        placeholder="Confirm Password"
+        formControlName="confirmPassword"
+        required
+      />
+      <mat-error *ngIf="createUserForm.get('confirmPassword')?.touched &&
+       createUserForm.get('confirmPassword')?.errors?.required">
+        Please enter confirm password to sign up
+      </mat-error>
+      <mat-error *ngIf="createUserForm.get('confirmPassword')?.touched &&
+       createUserForm.get('confirmPassword')?.errors?.passwordMismatch">
+        Please make sure your passwords match
+      </mat-error>
+    </div>
+    <button class="btn btn-primary" type="submit">Register</button>
+  </form>
+  <p class="my-1">
+    Already have an account? <a routerLink="/auth">Sign In</a>
+  </p>
+</section>

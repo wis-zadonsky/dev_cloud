@@ -1,0 +1,35 @@
+<nav class="navbar bg-dark" *ngIf="getAuthStatus() | async; else unauthorized">
+    <h1>
+      <a routerLink="/"><i class="fas fa-code"></i> DevCloud</a>
+    </h1>
+    <ul>
+      <li><a>Developers</a></li>
+      <li><a>Posts</a></li>
+      <li *ngIf="(currentUser$ | async) as user">
+        |
+        <a routerLink="/" title="Dashboard"
+        ><i class="fas fa-user"></i>
+          <span class="hide-sm">{{user.name}}</span></a
+        >
+      </li>
+      <li (click)="logout()">
+        <a title="Logout">
+          <i class="fas fa-sign-out-alt"></i>
+          <span class="hide-sm">Logout</span></a
+        >
+      </li>
+    </ul>
+</nav>
+
+<ng-template #unauthorized>
+  <nav class="navbar bg-dark">
+    <h1>
+      <a routerLink="/"><i class="fas fa-code"></i> DevCloud</a>
+    </h1>
+    <ul>
+      <li><a>Developers</a></li>
+      <li routerLink="auth/registration"><a>Register</a></li>
+      <li routerLink="auth"><a>Login</a></li>
+    </ul>
+  </nav>
+</ng-template>
