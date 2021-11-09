@@ -31,4 +31,8 @@ export class UserService {
       );
   }
 
+  public getCurrentUserProfile(): Observable<Object> {
+    return this._httpClient.get(`${this._environment.baseUrl}profile/me`);
+  }
+
 }

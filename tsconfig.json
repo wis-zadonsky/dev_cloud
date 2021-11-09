@@ -22,7 +22,8 @@
     ],
     "paths": {
       "@app/core": ["app/core/index.ts"],
-      "@app/auth": ["app/auth/index.ts"]
+      "@app/auth": ["app/auth/index.ts"],
+      "@app/shared": ["app/shared/index.ts"],
     }
   },
   "angularCompilerOptions": {
