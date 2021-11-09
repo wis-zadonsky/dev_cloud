@@ -5,11 +5,11 @@
     <ul>
       <li><a>Developers</a></li>
       <li><a>Posts</a></li>
-      <li>
+      <li *ngIf="(currentUser$ | async) as user">
         |
         <a routerLink="/" title="Dashboard"
         ><i class="fas fa-user"></i>
-          <span class="hide-sm">Dashboard</span></a
+          <span class="hide-sm">{{user.name}}</span></a
         >
       </li>
       <li (click)="logout()">

@@ -2,8 +2,8 @@ import { Component, Output, EventEmitter, Input } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 import { ISignUp } from '../../interfaces/sign-up.interface';
-import { ValidationService } from '../../../core/services/validation.service';
-import { IError } from '../../../core/interfaces/error.interface';
+import { ValidationService } from '../../../shared/services/validation.service';
+import { IError } from '../../../shared/interfaces/error.interface';
 
 @Component({
   selector: 'app-registration',

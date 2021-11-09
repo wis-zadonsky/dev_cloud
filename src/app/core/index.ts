@@ -1,2 +1,2 @@
 export { CoreModule } from './core.module';
-export { IAuthToken } from './interfaces/auth-token.interface';
+export { IAuthToken } from '../shared/interfaces/auth-token.interface';

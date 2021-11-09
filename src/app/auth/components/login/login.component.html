@@ -2,7 +2,7 @@
   <app-alert *ngIf="errors" [errors]="errors"></app-alert>
   <h1 class="large text-primary">Sign In</h1>
   <p class="lead">👨‍💻 Sign into Your Account</p>
-  <form class="form" [formGroup]="authForm" (ngSubmit)="authForm.valid && submit()">
+  <form class="form" [formGroup]="authForm" (ngSubmit)="submit()">
     <div class="form-group">
       <input
         type="email"
@@ -10,6 +10,12 @@
         formControlName="email"
         required
       />
+      <mat-error *ngIf="authForm.get('email')?.touched && authForm.get('email')?.errors?.required">
+        Please enter email to sign in
+      </mat-error>
+      <mat-error *ngIf="authForm.get('email')?.touched && authForm.get('email')?.errors?.email">
+        The entered email is invalid. Please check entered email for proper spelling
+      </mat-error>
     </div>
     <div class="form-group">
       <input
@@ -18,6 +24,9 @@
         formControlName="password"
         required
       />
+      <mat-error *ngIf="authForm.get('password')?.touched && authForm.get('password')?.errors?.required">
+        Please enter password to sign in
+      </mat-error>
     </div>
     <button type="submit" class="btn btn-primary">Login</button>
   </form>

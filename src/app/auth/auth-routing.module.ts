@@ -6,6 +6,7 @@ import { LoginContainer, RegistrationContainer } from './containers';
 const routes: Routes = [
   {
     path: '',
+    pathMatch: 'full',
     component: LoginContainer,
   },
   {

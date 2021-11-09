@@ -8,7 +8,7 @@ import { IAuthToken } from '@app/core';
 
 import { IAuth } from '../../interfaces/auth.interface';
 import { AuthService } from '../../services/auth.service';
-import { IError } from '../../../core/interfaces/error.interface';
+import { IError } from '../../../shared/interfaces/error.interface';
 
 @Component({
   selector: 'app-login-container',

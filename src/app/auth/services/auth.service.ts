@@ -16,6 +16,10 @@ import { environment } from '../../../environments/environment';
 })
 export class AuthService {
 
+  public get authToken(): string | null {
+    return localStorage.getItem('token');
+  }
+
   public get authStatus(): Observable<boolean> {
     return this.authStatus$.asObservable();
   }

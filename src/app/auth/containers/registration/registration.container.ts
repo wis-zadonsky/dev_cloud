@@ -8,7 +8,7 @@ import { IAuthToken } from '@app/core';
 import { AuthService } from '@app/auth';
 
 import { ISignUp } from '../../interfaces/sign-up.interface';
-import { IError } from '../../../core/interfaces/error.interface';
+import { IError } from '../../../shared/interfaces/error.interface';
 
 @Component({
   selector: 'app-registration-container',

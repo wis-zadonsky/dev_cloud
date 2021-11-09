@@ -2,11 +2,13 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 
+import { MatFormFieldModule } from '@angular/material/form-field';
+
+import { SharedModule } from '../shared/shared.module';
+
 import { AuthRoutingModule } from './auth-routing.module';
 import { LoginComponent, RegistrationComponent } from './components';
 import { LoginContainer, RegistrationContainer } from './containers';
-import {SharedModule} from "../shared/shared.module";
-import {MatFormFieldModule} from "@angular/material/form-field";
 
 @NgModule({
   declarations: [
@@ -21,4 +23,5 @@ import {MatFormFieldModule} from "@angular/material/form-field";
     MatFormFieldModule,
   ],
 })
-export class AuthModule { }
+export class AuthModule {}
+

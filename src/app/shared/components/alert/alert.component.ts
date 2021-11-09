@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 
-import { IError } from '../../../core/interfaces/error.interface';
+import { IError } from '../../interfaces/error.interface';
 
 @Component({
   selector: 'app-alert',

@@ -2,7 +2,7 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 import { IAuth } from '../../interfaces/auth.interface';
-import { IError } from '../../../core/interfaces/error.interface';
+import { IError } from '../../../shared/interfaces/error.interface';
 
 @Component({
   selector: 'app-login',
@@ -23,7 +23,10 @@ export class LoginComponent {
   }
 
   public submit(): void {
-    this.formSubmit.emit(this.authForm.value);
+    if (this.authForm.valid) {
+      this.formSubmit.emit(this.authForm.value);
+    }
+    this.authForm.markAllAsTouched();
   }
 
   private _createForm(): FormGroup {
