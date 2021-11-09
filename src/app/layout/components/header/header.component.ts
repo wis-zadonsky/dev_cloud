@@ -3,9 +3,7 @@ import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 
 import { AuthService } from '@app/auth';
-
-import { UserService } from '../../../shared/services/user.service';
-import { IUser } from '../../../shared/interfaces/user.interface';
+import { UserService, IUser } from '@app/shared';
 
 @Component({
   selector: 'app-header',

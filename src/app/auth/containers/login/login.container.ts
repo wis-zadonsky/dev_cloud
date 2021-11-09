@@ -1,14 +1,13 @@
 import { Component, OnDestroy } from '@angular/core';
 import { HttpErrorResponse } from '@angular/common/http';
+import { Router } from '@angular/router';
 
-import { takeUntil, tap } from 'rxjs/operators';
+import { takeUntil } from 'rxjs/operators';
 import { Subject } from 'rxjs';
-
-import { IAuthToken } from '@app/core';
 
 import { IAuth } from '../../interfaces/auth.interface';
 import { AuthService } from '../../services/auth.service';
-import { IError } from '../../../shared/interfaces/error.interface';
+import { IError } from '@app/shared';
 
 @Component({
   selector: 'app-login-container',
@@ -20,7 +19,10 @@ export class LoginContainer implements OnDestroy {
 
   private readonly _destroy$ = new Subject<void>();
 
-  constructor(private readonly _authService: AuthService) {}
+  constructor(
+    private readonly _router: Router,
+    private readonly _authService: AuthService,
+    ) {}
 
   public ngOnDestroy(): void {
     this._destroy$.next();
@@ -33,7 +35,7 @@ export class LoginContainer implements OnDestroy {
       .pipe(
         takeUntil(this._destroy$),
       )
-      .subscribe(() => console.log('Success!'),
+      .subscribe(() => this._router.navigate(['dashboard']),
                  (error: HttpErrorResponse) => this.errors = error.error.errors);
   }
 

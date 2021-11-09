@@ -1,8 +1,9 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
+import { IError } from '@app/shared';
+
 import { IAuth } from '../../interfaces/auth.interface';
-import { IError } from '../../../shared/interfaces/error.interface';
 
 @Component({
   selector: 'app-login',
