@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 
-import { IError } from '../../interfaces/error.interface';
+import { IError } from '@app/shared';
 
 @Component({
   selector: 'app-alert',
@@ -10,7 +10,10 @@ import { IError } from '../../interfaces/error.interface';
 export class AlertComponent {
 
   @Input()
-  public errors!: IError[];
+  public errors!: IError[] | null;
+
+  @Input()
+  public successMessage!: string | null;
 
   constructor() { }
 

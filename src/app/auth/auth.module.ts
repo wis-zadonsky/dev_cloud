@@ -4,7 +4,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 
 import { MatFormFieldModule } from '@angular/material/form-field';
 
-import { SharedModule } from '../shared/shared.module';
+import { SharedModule } from '@app/shared';
 
 import { AuthRoutingModule } from './auth-routing.module';
 import { LoginComponent, RegistrationComponent } from './components';

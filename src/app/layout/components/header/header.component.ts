@@ -1,6 +1,7 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 
 import { Observable } from 'rxjs';
+import { startWith, switchMap } from 'rxjs/operators';
 
 import { AuthService } from '@app/auth';
 import { UserService, IUser } from '@app/shared';
@@ -13,7 +14,7 @@ import { UserService, IUser } from '@app/shared';
 })
 export class HeaderComponent implements OnInit {
 
-  public currentUser$!: Observable<IUser | null>;
+  public currentUser$!: Observable<IUser>;
 
   constructor(
     private readonly _authService: AuthService,
@@ -34,7 +35,11 @@ export class HeaderComponent implements OnInit {
   }
 
   private _getCurrentUser(): void {
-    this.currentUser$ = this._currentUserService.currentUser$;
+    this.currentUser$ = this._currentUserService.currentUser$
+      .pipe(
+        startWith(''),
+        switchMap(() => this._currentUserService.getCurrentUser()),
+      );
   }
 
 }

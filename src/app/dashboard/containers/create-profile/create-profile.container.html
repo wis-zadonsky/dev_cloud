@@ -1,0 +1,5 @@
+<app-create-profile
+  [currentUserProfile]="currentUserProfile$ | async"
+  [successMessage]="successMessage"
+  (formUpdate)="updateProfile($event)"
+  (formSubmit)="createProfile($event)"></app-create-profile>

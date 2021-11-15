@@ -1,8 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 import { Observable } from 'rxjs';
 
-import { IUser, UserService } from '@app/shared';
+import { ProfileService } from '../../services/profile.service';
+import { IUserProfile } from '../../interfaces/user-profile.interface';
 
 @Component({
   selector: 'app-user-dashboard',
@@ -11,20 +12,28 @@ import { IUser, UserService } from '@app/shared';
 })
 export class UserDashboardComponent {
 
-  public currentUser$!: Observable<IUser>;
-  public currentUserProfile$!: Observable<Object>;
+  @Input('currentUserProfile')
+  public currentUserProfile$!: Observable<IUserProfile<string>>;
 
-  constructor(private readonly _userService: UserService) {
-    this.getCurrentUser();
-    this.getCurrentUserProfile();
+  @Output()
+  public experienceRemove = new EventEmitter<string>();
+  @Output()
+  public educationRemove = new EventEmitter<string>();
+
+  public createdStatus!: boolean;
+
+  constructor(
+    private readonly _profileService: ProfileService,
+    ) {
+    this.createdStatus = this._profileService.createdStatus.value;
   }
 
-  public getCurrentUser(): void {
-    this.currentUser$ = this._userService.getCurrentUser();
+  public removeExperience(id: string): void {
+    this.experienceRemove.emit(id);
   }
 
-  public getCurrentUserProfile(): void {
-    this.currentUserProfile$ = this._userService.getCurrentUserProfile();
+  public removeEducation(id: string): void {
+    this.educationRemove.emit(id);
   }
 
 }

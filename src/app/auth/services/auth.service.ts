@@ -9,7 +9,7 @@ import { IAuthToken } from '@app/core';
 
 import { IAuth } from '../interfaces/auth.interface';
 import { ISignUp } from '../interfaces/sign-up.interface';
-import { environment } from '../../../environments/environment';
+import { Environment } from '../../core/models/environment.model';
 
 @Injectable({
   providedIn: 'root',
@@ -26,11 +26,10 @@ export class AuthService {
 
   private authStatus$ = new BehaviorSubject<boolean>(false);
 
-  private readonly _environment = environment;
-
   constructor(
     private readonly _httpClient: HttpClient,
     private readonly _router: Router,
+    private readonly _environment: Environment,
     ) {
     this.authStatus$.next(!!localStorage.getItem('token'));
   }

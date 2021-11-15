@@ -1,38 +1,30 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
-import { BehaviorSubject, Observable } from 'rxjs';
-import { tap } from 'rxjs/operators';
+import { Observable, Subject } from 'rxjs';
 
-import { environment } from '../../../environments/environment';
-import { IUser } from '../interfaces/user.interface';
+import { IUser } from '../interfaces';
+import { Environment } from '../../core/models/environment.model';
 
 @Injectable({
   providedIn: 'root',
 })
 export class UserService {
 
-  private _currentUser$ = new BehaviorSubject<IUser | null>(null);
+  private _currentUser$ = new Subject<IUser>();
 
-  // FIXME Create provider in core module and inject it in services
-  private readonly _environment = environment;
-
-  constructor(private readonly _httpClient: HttpClient) {
+  constructor(
+    private readonly _httpClient: HttpClient,
+    private readonly _environment: Environment,
+    ) {
   }
 
-  public get currentUser$(): Observable<IUser | null> {
+  public get currentUser$(): Observable<IUser> {
     return this._currentUser$.asObservable();
   }
 
   public getCurrentUser(): Observable<IUser> {
-    return this._httpClient.get<IUser>(`${this._environment.baseUrl}auth`)
-      .pipe(
-        tap((user) => this._currentUser$.next(user)),
-      );
-  }
-
-  public getCurrentUserProfile(): Observable<Object> {
-    return this._httpClient.get(`${this._environment.baseUrl}profile/me`);
+    return this._httpClient.get<IUser>(`${this._environment.baseUrl}auth`);
   }
 
 }

@@ -1,3 +1,11 @@
-<div class="alert alert-danger" *ngFor="let error of errors">
-  {{error.msg}}
-</div>
+<ng-container *ngIf="errors">
+  <div class="alert alert-danger" *ngFor="let error of errors">
+    {{error.msg}}
+  </div>
+</ng-container>
+
+<ng-container *ngIf="successMessage">
+  <div class="alert alert-success">
+    {{successMessage}}
+  </div>
+</ng-container>

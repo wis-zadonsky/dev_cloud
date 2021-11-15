@@ -1,13 +1,13 @@
 <nav class="navbar bg-dark" *ngIf="getAuthStatus() | async; else unauthorized">
     <h1>
-      <a routerLink="/dashboard"><i class="fas fa-code"></i> DevCloud</a>
+      <a routerLink="/"><i class="fas fa-code"></i> DevCloud</a>
     </h1>
     <ul>
       <li><a>Developers</a></li>
-      <li><a>Posts</a></li>
+      <li><a routerLink="/dashboard/posts">Posts</a></li>
       <li *ngIf="(currentUser$ | async) as user">
         |
-        <a routerLink="dashboard" title="Dashboard"
+        <a routerLink="dashboard"
         ><i class="fas fa-user"></i>
           <span class="hide-sm">{{user.name}}</span></a
         >

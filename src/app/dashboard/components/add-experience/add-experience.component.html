@@ -1,0 +1,51 @@
+<section class="container">
+  <h1 class="large text-primary">
+    Add An Experience
+  </h1>
+  <p class="lead">
+    <i class="fas fa-code-branch"></i> Add any developer/programming
+    positions that you have had in the past
+  </p>
+  <small>* = required field</small>
+  <form class="form" [formGroup]="experienceForm" (ngSubmit)="submit()">
+    <div class="form-group">
+      <input type="text" placeholder="* Job Title" formControlName="title" required />
+      <mat-error *ngIf="experienceForm.get('title')?.touched && experienceForm.get('title')?.errors?.required">
+        Please enter title of your job
+      </mat-error>
+    </div>
+    <div class="form-group">
+      <input type="text" placeholder="* Company" formControlName="company" required />
+      <mat-error *ngIf="experienceForm.get('company')?.touched && experienceForm.get('company')?.errors?.required">
+        Please enter name of your company
+      </mat-error>
+    </div>
+    <div class="form-group">
+      <input type="text" placeholder="Location" formControlName="location" />
+    </div>
+    <div class="form-group">
+      <h4>From Date</h4>
+      <input type="date" formControlName="from" />
+      <mat-error *ngIf="experienceForm.get('from')?.touched && experienceForm.get('from')?.errors?.required">
+        Please enter date when you started work in company
+      </mat-error>
+    </div>
+    <div class="form-group">
+      <p><input type="checkbox" formControlName="current"/> Current Job</p>
+    </div>
+    <div class="form-group">
+      <h4>To Date</h4>
+      <input type="date" formControlName="to" />
+    </div>
+    <div class="form-group">
+          <textarea
+            formControlName="description"
+            cols="30"
+            rows="5"
+            placeholder="Job Description"
+          ></textarea>
+    </div>
+    <input type="submit" class="btn btn-primary my-1" />
+    <a class="btn btn-light my-1" routerLink="/dashboard">Go Back</a>
+  </form>
+</section>
