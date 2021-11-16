@@ -1,1 +1,62 @@
-<p>posts-page works!</p>
+<section class="container">
+  <app-alert [successMessage]="responseMessage"></app-alert>
+  <h1 class="large text-primary">
+    Posts
+  </h1>
+  <p class="lead"><i class="fas fa-user"></i> Welcome to the community!</p>
+
+  <div class="post-form">
+    <div class="bg-primary p">
+      <h3>Say Something...</h3>
+    </div>
+    <form class="form my-1" [formGroup]="postsForm" (ngSubmit)="submit()">
+          <textarea
+            formControlName="text"
+            cols="30"
+            rows="5"
+            placeholder="Create a post"
+            required
+          ></textarea>
+      <input type="submit" class="btn btn-dark my-1" value="Submit" />
+    </form>
+  </div>
+
+  <div class="posts" *ngIf="(allPosts$ | async) as posts">
+    <div class="post bg-white p-1 my-1" *ngFor="let post of posts">
+      <div>
+        <a>
+          <img
+            class="round-img"
+            src="https:{{post.avatar}}"
+          />
+          <h4>{{post.name}}</h4>
+        </a>
+      </div>
+      <div>
+        <p class="my-1">
+          {{post.text}}
+        </p>
+        <p class="post-date">
+          Posted on {{post.date | date: 'shortDate'}}
+        </p>
+        <button type="button" class="btn btn-light" (click)="likePost(post._id)">
+          <i class="fas fa-thumbs-up"></i>
+          <span>{{post.likes.length}}</span>
+        </button>
+        <button type="button" class="btn btn-light" (click)="unlikePost(post._id)">
+          <i class="fas fa-thumbs-down"></i>
+        </button>
+        <a class="btn btn-primary" routerLink="{{post._id}}">
+          Discussion <span class='comment-count'>{{post.comments.length}}</span>
+        </a>
+        <button
+          type="button"
+          class="btn btn-danger"
+          (click)="removePost(post._id)"
+        >
+          <i class="fas fa-times" style="margin-right: 0"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+</section>

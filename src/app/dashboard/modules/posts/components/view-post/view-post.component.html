@@ -1,0 +1,61 @@
+<section class="container" *ngIf="(post$ | async) as post">
+  <a routerLink="../" class="btn">Back To Posts</a>
+  <div class="post bg-white p-1 my-1">
+    <div>
+      <a href="profile.html">
+        <img
+          class="round-img"
+          src="https:{{post.avatar}}"
+          alt=""
+        />
+        <h4>{{post.name}}</h4>
+      </a>
+    </div>
+    <div>
+      <p class="my-1">{{post.text}}</p>
+    </div>
+  </div>
+
+  <div class="post-form">
+    <div class="bg-primary p">
+      <h3>Leave A Comment</h3>
+    </div>
+    <form class="form my-1" [formGroup]="commentForm" (ngSubmit)="submit()">
+          <textarea
+            formControlName="text"
+            cols="30"
+            rows="5"
+            placeholder="Comment on this post"
+            required
+          ></textarea>
+      <button type="submit" class="btn btn-dark my-1" [disabled]="commentForm.invalid">Submit</button>
+    </form>
+  </div>
+
+  <div class="comments" *ngFor="let comment of post.comments">
+    <div class="post bg-white p-1 my-1">
+      <div>
+        <a>
+          <img
+            class="round-img"
+            src="https:{{comment.avatar}}"
+          />
+          <h4>{{comment.name}}</h4>
+        </a>
+      </div>
+      <div>
+        <p class="my-1">{{comment.text}}</p>
+        <p class="post-date">
+          Posted on {{comment.date | date: 'shortDate'}}
+        </p>
+        <button
+          type="button"
+          class="btn btn-danger"
+          (click)="removeComment(comment._id)"
+        >
+          <i class="fas fa-times" style="margin-right: 0"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+</section>

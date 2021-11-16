@@ -1,12 +1,17 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { PostsPageComponent } from './components/posts-page/posts-page.component';
+import { PostsPageContainer } from './containers/posts-page/posts-page.container';
+import { ViewPostContainer } from './containers/view-post/view-post.container';
 
 const routes: Routes = [
   {
     path: '',
-    component: PostsPageComponent,
+    component: PostsPageContainer,
+  },
+  {
+    path: ':id',
+    component: ViewPostContainer,
   },
 ];
 

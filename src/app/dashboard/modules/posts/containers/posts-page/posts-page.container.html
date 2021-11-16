@@ -1,0 +1,7 @@
+<app-posts-page
+  [allPosts]="allPosts$"
+  [responseMessage]="responseMessage"
+  (formSubmit)="addPost($event)"
+  (postRemove)="removePost($event)"
+  (postLiked)="likePost($event)"
+  (postUnliked)="unlikePost($event)"></app-posts-page>
