@@ -1,0 +1,26 @@
+<section class="container">
+  <h1 class="large text-primary">Developers</h1>
+  <p class="lead">
+    <i class="fab fa-connectdevelop"></i> Browse and connect with developers
+  </p>
+  <div class="profiles" *ngIf="(allProfiles$ | async) as allProfiles">
+    <div class="profile bg-light" *ngFor="let profile of allProfiles">
+      <img
+        class="round-img"
+        src="https:{{profile.user.avatar}}"
+      />
+      <div>
+        <h2>{{profile.user.name}}</h2>
+        <p>Developer at {{profile.company}}</p>
+        <p>{{profile.location}}</p>
+        <a routerLink="{{profile.user._id}}" class="btn btn-primary" *ngIf="authStatus$ | async">View Profile</a>
+      </div>
+
+      <ul>
+        <li class="text-primary" *ngFor="let skill of profile.skills">
+          <i class="fas fa-check"></i> {{skill}}
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>

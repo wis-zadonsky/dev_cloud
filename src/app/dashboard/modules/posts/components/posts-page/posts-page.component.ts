@@ -33,6 +33,8 @@ export class PostsPageComponent {
 
   public readonly postsForm!: FormGroup;
 
+  public readonly userId = localStorage.getItem('userId');
+
   constructor(private readonly _formBuilder: FormBuilder) {
     this.postsForm = this._createForm();
   }

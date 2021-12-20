@@ -3,7 +3,7 @@
       <a routerLink="/"><i class="fas fa-code"></i> DevCloud</a>
     </h1>
     <ul>
-      <li><a>Developers</a></li>
+      <li><a routerLink="/dashboard/developers">Developers</a></li>
       <li><a routerLink="/dashboard/posts">Posts</a></li>
       <li *ngIf="(currentUser$ | async) as user">
         |
@@ -27,7 +27,7 @@
       <a routerLink="/"><i class="fas fa-code"></i> DevCloud</a>
     </h1>
     <ul>
-      <li><a>Developers</a></li>
+      <li><a routerLink="developers">Developers</a></li>
       <li routerLink="auth/registration"><a>Register</a></li>
       <li routerLink="auth"><a>Login</a></li>
     </ul>

@@ -24,6 +24,8 @@ export class ViewPostComponent {
 
   public readonly commentForm!: FormGroup;
 
+  public readonly userId = localStorage.getItem('userId');
+
   constructor(private readonly _formBuilder: FormBuilder) {
     this.commentForm = this._createForm();
   }

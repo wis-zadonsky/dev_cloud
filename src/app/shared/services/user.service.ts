@@ -5,6 +5,7 @@ import { Observable, Subject } from 'rxjs';
 
 import { IUser } from '../interfaces';
 import { Environment } from '../../core/models/environment.model';
+import {tap} from "rxjs/operators";
 
 @Injectable({
   providedIn: 'root',
@@ -24,7 +25,10 @@ export class UserService {
   }
 
   public getCurrentUser(): Observable<IUser> {
-    return this._httpClient.get<IUser>(`${this._environment.baseUrl}auth`);
+    return this._httpClient.get<IUser>(`${this._environment.baseUrl}auth`)
+      .pipe(
+        tap((userData) => localStorage.setItem('userId', userData._id)),
+      );
   }
 
 }

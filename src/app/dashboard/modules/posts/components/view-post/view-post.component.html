@@ -35,7 +35,7 @@
   <div class="comments" *ngFor="let comment of post.comments">
     <div class="post bg-white p-1 my-1">
       <div>
-        <a>
+        <a routerLink="/dashboard/developers/{{post.user}}">
           <img
             class="round-img"
             src="https:{{comment.avatar}}"
@@ -48,7 +48,7 @@
         <p class="post-date">
           Posted on {{comment.date | date: 'shortDate'}}
         </p>
-        <button
+        <button *ngIf="post.user === userId"
           type="button"
           class="btn btn-danger"
           (click)="removeComment(comment._id)"

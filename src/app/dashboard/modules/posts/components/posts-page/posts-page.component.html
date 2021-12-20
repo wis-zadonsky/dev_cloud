@@ -24,7 +24,7 @@
   <div class="posts" *ngIf="(allPosts$ | async) as posts">
     <div class="post bg-white p-1 my-1" *ngFor="let post of posts">
       <div>
-        <a>
+        <a routerLink="/dashboard/developers/{{post.user}}">
           <img
             class="round-img"
             src="https:{{post.avatar}}"
@@ -49,7 +49,7 @@
         <a class="btn btn-primary" routerLink="{{post._id}}">
           Discussion <span class='comment-count'>{{post.comments.length}}</span>
         </a>
-        <button
+        <button *ngIf="post.user === userId"
           type="button"
           class="btn btn-danger"
           (click)="removePost(post._id)"

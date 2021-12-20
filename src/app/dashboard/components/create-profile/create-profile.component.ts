@@ -68,13 +68,11 @@ export class CreateProfileComponent implements OnChanges {
       skills: [null, Validators.required],
       githubUsername: [null],
       bio: [null],
-      social: this._formBuilder.group({
-        twitter: [null],
-        facebook: [null],
-        youtube: [null],
-        vk: [null],
-        instagram: [null],
-      }),
+      twitter: [null],
+      facebook: [null],
+      youtube: [null],
+      vk: [null],
+      instagram: [null],
     });
   }
 
@@ -87,13 +85,11 @@ export class CreateProfileComponent implements OnChanges {
       skills: this.currentUserProfile?.skills,
       githubUsername: this.currentUserProfile?.githubUsername,
       bio: this.currentUserProfile?.bio,
-      social: {
-        twitter: this.currentUserProfile?.social?.twitter,
-        facebook: this.currentUserProfile?.social?.facebook,
-        youtube: this.currentUserProfile?.social?.youtube,
-        vk: this.currentUserProfile?.social?.vk,
-        instagram: this.currentUserProfile?.social.instagram,
-      },
+      twitter: this.currentUserProfile?.social?.twitter,
+      facebook: this.currentUserProfile?.social?.facebook,
+      youtube: this.currentUserProfile?.social?.youtube,
+      vk: this.currentUserProfile?.social?.vk,
+      instagram: this.currentUserProfile?.social?.instagram,
     });
   }
 

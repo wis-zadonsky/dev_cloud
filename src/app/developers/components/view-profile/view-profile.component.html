@@ -1,0 +1,101 @@
+<section class="container">
+  <a routerLink="../" class="btn btn-light">Back To Profiles</a>
+
+  <div class="profile-grid my-1" *ngIf="(userProfile$ | async) as userProfile">
+    <!-- Top -->
+    <div class="profile-top bg-primary p-2">
+      <img
+        class="round-img my-1"
+        src="https:{{userProfile.user.avatar}}"
+      />
+      <h1 class="large">{{userProfile.user.name}}</h1>
+      <p class="lead">Developer at {{userProfile.company}}</p>
+      <p>{{userProfile.location}}</p>
+      <div class="icons my-1">
+        <a *ngIf="userProfile.website" href="{{userProfile.website}}" target="_blank" rel="noopener noreferrer">
+          <i class="fas fa-globe fa-2x"></i>
+        </a>
+        <a *ngIf="userProfile.social?.twitter" href="{{userProfile.social?.twitter}}" target="_blank" rel="noopener noreferrer">
+          <i class="fab fa-twitter fa-2x"></i>
+        </a>
+        <a *ngIf="userProfile.social?.facebook" href="{{userProfile.social?.facebook}}" target="_blank" rel="noopener noreferrer">
+          <i class="fab fa-facebook fa-2x"></i>
+        </a>
+        <a *ngIf="userProfile.social?.vk" href="{{userProfile.social?.vk}}" target="_blank" rel="noopener noreferrer">
+          <i class="fab fa-vk fa-2x"></i>
+        </a>
+        <a *ngIf="userProfile.social?.youtube" href="{{userProfile.social?.youtube}}" target="_blank" rel="noopener noreferrer">
+          <i class="fab fa-youtube fa-2x"></i>
+        </a>
+        <a *ngIf="userProfile.social?.instagram" href="{{userProfile.social?.instagram}}" target="_blank" rel="noopener noreferrer">
+          <i class="fab fa-instagram fa-2x" ></i>
+        </a>
+      </div>
+    </div>
+
+    <!-- About -->
+    <div class="profile-about bg-light p-2">
+      <h2 class="text-primary">{{userProfile.user.name}}'s Bio</h2>
+      <p>{{userProfile.bio}}</p>
+      <div class="line"></div>
+      <h2 class="text-primary">Skill Set</h2>
+      <div class="skills">
+        <div class="p-1" *ngFor="let skill of userProfile.skills"><i class="fa fa-check" ></i> {{skill}}</div>
+      </div>
+    </div>
+
+    <!-- Experience -->
+    <ng-container *ngIf="userProfile.experience.length">
+      <div class="profile-exp bg-white p-2">
+        <h2 class="text-primary">Experience</h2>
+        <div *ngFor="let experience of userProfile.experience">
+          <h3 class="text-dark">{{experience.company}}</h3>
+          <p>{{experience.from | slice: 0: 10}} - {{experience.to}}</p>
+          <p><strong>Position: </strong>{{experience.title}}</p>
+          <p>
+            <strong>Description: </strong>{{experience.description}}
+          </p>
+        </div>
+      </div>
+    </ng-container>
+
+    <!-- Education -->
+    <ng-container *ngIf="userProfile.education.length">
+      <div class="profile-edu bg-white p-2">
+        <h2 class="text-primary">Education</h2>
+        <div *ngFor="let education of userProfile.education">
+          <h3>{{education.school}}</h3>
+          <p>{{education.from | slice: 0: 10}} - {{education.to | slice: 0: 10}}</p>
+          <p><strong>Degree: </strong>{{education.degree}}</p>
+          <p><strong>Field Of Study: </strong>{{education.fieldOfStudy}}</p>
+          <p *ngIf="education.description">
+            <strong>Description: </strong>{{education.description}}
+          </p>
+        </div>
+      </div>
+    </ng-container>
+
+    <!-- Github -->
+    <div class="profile-github" *ngIf="(userProfile.githubRepos | async) as githubRepos">
+      <h2 class="text-primary my-1">
+        <i class="fab fa-github"></i> Github Repos
+      </h2>
+      <div class="repo bg-white p-1 my-1" *ngFor="let githubRepo of githubRepos">
+        <div>
+          <h4><a href="{{githubRepo.html_url}}" target="_blank"
+                 rel="noopener noreferrer">{{githubRepo.name}}</a></h4>
+          <p *ngIf="githubRepo.description">
+            {{githubRepo.description}}
+          </p>
+        </div>
+        <div>
+          <ul>
+            <li class="badge badge-primary">Stars: {{githubRepo.stargazers_count}}</li>
+            <li class="badge badge-dark">Watchers: {{githubRepo.watchers_count}}</li>
+            <li class="badge badge-light">Forks: {{githubRepo.forks_count}}</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
