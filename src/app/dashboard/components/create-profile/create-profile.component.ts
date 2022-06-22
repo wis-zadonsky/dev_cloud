@@ -53,8 +53,9 @@ export class CreateProfileComponent implements OnChanges {
     if (this.userProfileForm.valid) {
       if (this.currentUserProfile === null) {
         this.formSubmit.emit(this.userProfileForm.value);
+      } else {
+        this.formUpdate.emit(this.userProfileForm.value);
       }
-      this.formUpdate.emit(this.userProfileForm.value);
     }
     this.userProfileForm.markAllAsTouched();
   }
