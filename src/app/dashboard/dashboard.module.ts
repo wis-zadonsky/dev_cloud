@@ -15,6 +15,7 @@ import { AddExperienceContainer } from './containers/add-experience/add-experien
 import { AddEducationComponent } from './components/add-education/add-education.component';
 import { AddEducationContainer } from './containers/add-education/add-education.container';
 import { UserDashboardContainer } from './containers/user-dashboard/user-dashboard.container';
+import { ReportComponent } from './components/report/report.component';
 
 
 @NgModule({
@@ -27,6 +28,7 @@ import { UserDashboardContainer } from './containers/user-dashboard/user-dashboa
     AddEducationComponent,
     AddEducationContainer,
     UserDashboardContainer,
+    ReportComponent,
   ],
   imports: [
     CommonModule,

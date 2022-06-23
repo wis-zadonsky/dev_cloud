@@ -1,3 +1,4 @@
+import { IReport } from './../interfaces/report.interface';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
@@ -116,6 +117,13 @@ export class ProfileService {
       .pipe(
         tap(() => this.currentUserProfile$.next()),
       );
+  }
+
+  public createReport(formData: IReport): Observable<IReport> {
+    return this._httpClient.post<IReport>(
+      `${this._environment.baseUrl}profile/report`,
+      formData,
+      )
   }
 
 }

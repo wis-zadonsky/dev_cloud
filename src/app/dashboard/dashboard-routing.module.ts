@@ -5,6 +5,7 @@ import { CreateProfileContainer } from './containers/create-profile/create-profi
 import { AddExperienceContainer } from './containers/add-experience/add-experience.container';
 import { AddEducationContainer } from './containers/add-education/add-education.container';
 import { UserDashboardContainer } from './containers/user-dashboard/user-dashboard.container';
+import { ReportComponent } from './components/report/report.component';
 
 const routes: Routes = [
   {
@@ -22,6 +23,10 @@ const routes: Routes = [
   {
     path: 'add-education',
     component: AddEducationContainer,
+  },
+  {
+    path: 'report',
+    component: ReportComponent,
   },
   {
     path: 'posts',

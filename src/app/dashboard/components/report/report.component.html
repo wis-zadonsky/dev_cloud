@@ -1,0 +1,21 @@
+<section class="container">
+    <h1 class="large text-primary">Feedback</h1>
+    <p class="lead">
+        <i class="fas fa-comment-dots"></i>If you want to tell something to us, write a feedback.
+    </p>
+    <form class="form" [formGroup]="reportForm" (ngSubmit)="saveReport()">
+        <div class="form-group">
+            <input type="text" formControlName="userName" placeholder="Username" readonly>
+        </div>
+        <div class="form-group">
+            <input type="text" formControlName="title" placeholder="Title">
+            <mat-error *ngIf="reportForm?.get('title')?.touched && reportForm?.get('title')?.errors?.required">Title field is required</mat-error>
+        </div>
+        <div class="form-group">
+            <textarea formControlName="description" placeholder="Description"></textarea>
+            <mat-error *ngIf="reportForm?.get('description')?.touched && reportForm?.get('description')?.errors?.required">Description field is required</mat-error>
+        </div>
+        <input type="submit" class="btn btn-primary my-1" />
+        <a class="btn btn-light my-1" routerLink="/">Go Back</a>
+    </form>
+</section>
